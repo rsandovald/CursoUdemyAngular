@@ -1,0 +1,6 @@
+map-toobar{
+    position: sticky;
+    position: -web-sticky; 
+    top:0; 
+    z-index: 1000; 
+}

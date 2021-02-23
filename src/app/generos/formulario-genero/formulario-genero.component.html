@@ -1,0 +1,19 @@
+<form (submit)= "this.guardarCambios()"  [formGroup] ="form" >
+    <mat-form-field appereance="outline">
+    <mat-label>Nombre*</mat-label>
+    <input formControlName="nombre" matInput />
+    </mat-form-field>
+    <mat-error *ngIf = "form.invalid">
+       {{ obtenerErrorCampoNombre ()}}
+    </mat-error>
+ 
+    <div>
+       <button mat-flat-button color="primary" [disabled] = "form.invalid">
+          Guardar Cambios
+       </button>
+       <a mat-stroked-button routerLink = "/generos">
+          Cancelar
+       </a>
+    </div>
+    </form>
+    
