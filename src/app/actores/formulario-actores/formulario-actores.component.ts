@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { actorCreacionDTO } from './actor';
 
 @Component({
   selector: 'app-formulario-actores',
@@ -9,14 +10,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormularioActoresComponent implements OnInit {
 
   form: FormGroup ; 
+  @Input ()
+  modelo:actorCreacionDTO; 
+  @Output ()
+  submit: EventEmitter <actorCreacionDTO> = new EventEmitter <actorCreacionDTO> (); 
 
   constructor(   private formBuilder: FormBuilder)
   { 
-
   }
 
   ngOnInit(): void {
-
    
     this.form = this.formBuilder.group (
       { nombre:  [ '', 
@@ -25,8 +28,16 @@ export class FormularioActoresComponent implements OnInit {
                  ], 
         fechaNacimiento: ''
       }
-    )
-   
+    )   ; 
+
+    if (this.modelo!== undefined)
+    {
+      this.form.patchValue (this.modelo); 
+    }
   }
 
+  onSubmit ()
+  {
+    this.submit.emit (this.form.value); 
+  }
 }

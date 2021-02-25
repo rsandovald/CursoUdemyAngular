@@ -1,5 +1,6 @@
 
-<form  [formGroup] = "form">
+<form  [formGroup] = "form" 
+(submit) ="this.onSubmit()">
 
 <mat-form-field appearance="outline">
     <mat-label>Nombre*</mat-label>
@@ -12,16 +13,20 @@
     <input formControlName="fechaNacimiento" matInput />    
 </mat-form-field>
 
-<!--
-Subir a git hub
--->
+<div>
+    <button mat-flat-button color="primary" [disabled] = "form.invalid">
+        Guardar cambios
+    </button>
+    <a mat-stroked-button routerLink="/actores">
+    Cancelar
+    </a>
+</div>
+
 <!--
 <mat-form-field appearance="outline"> 
 <mat-label>Fecha de Nacimiento</mat-label>
 <input formControlName ="fechaNacimiento" matInput [matDatepicker]="picker"/>
 <mat-datepicker-toggle matSuffix [for] ="picker"  ></mat-datepicker-toggle>
 </mat-form-field>
-
 -->
-
 </form>
